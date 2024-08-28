@@ -16,15 +16,15 @@ def replaceAndPrintResult(conf_path: str, data_path: str) -> None:
 def getConfValues(conf_path: str) -> dict:
     """Get information about substitutions from a given configuration file
     :param conf_path: path to configuration file
-    :return: dict with substitution data
+    :return: dictionary with substitution data
     """
-    key_value = {}
+    substitutionConf = {}
     with open(conf_path, 'r') as file:
         lines = [line.strip() for line in file]
         for line in lines:
             splittedLine = line.split('=', 1)
-            key_value[splittedLine[0]] = splittedLine[1]
-    return key_value
+            substitutionConf[splittedLine[0]] = splittedLine[1]
+    return substitutionConf
 
 
 def getText(data_path: str) -> list:
@@ -44,7 +44,7 @@ def replaceMathesAndCount(conf: dict, data: list) -> dict:
     """
     :param conf: configuration data
     :param data: text data
-    :return:dictionary with changed lines and count of substitution
+    :return: dictionary with changed lines and count of substitution
     """
     modifiedLineAndCount = {}
     for line in data:
